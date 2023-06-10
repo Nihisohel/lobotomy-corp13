@@ -19,7 +19,7 @@
 	ranged = TRUE
 	armortype = BLACK_DAMAGE
 	stat_attack = HARD_CRIT
-	attack_sound = 'sound/creatures/venus_trap_hit.ogg'
+	attack_sound = 'sound/abnormalities/ebonyqueen/attack.ogg'
 	attack_verb_continuous = "claws"
 	attack_verb_simple = "claws"
 	projectilesound = 'sound/creatures/venus_trap_hit.ogg'
@@ -135,7 +135,7 @@
 	layer = POINT_LAYER	//We want this HIGH. SUPER HIGH. We want it so that you can absolutely, guaranteed, see exactly what is about to hit you.
 
 /obj/effect/root/Initialize()
-	..()
+	. = ..()
 	addtimer(CALLBACK(src, .proc/explode), 0.5 SECONDS)
 
 /obj/effect/root/proc/explode() //repurposed code from artillary bees, a delayed attack

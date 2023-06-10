@@ -29,6 +29,9 @@
 
 	max_boxes = 10
 	var/cake = 5 //How many cake charges are there (4)
+	chem_type = /datum/reagent/abnormality/bottle
+	harvest_phrase = "<span class='notice'>You sweep up some crumbs from around %ABNO into %VESSEL.</span>"
+	harvest_phrase_third = "%PERSON sweeps up crumbs from around %ABNO into %VESSEL."
 
 /mob/living/simple_animal/hostile/abnormality/bottle/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(!cake)
@@ -103,7 +106,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/bottle/proc/DecayProtagonistBuff(mob/living/carbon/human/buffed, justice = 0)
 	// Goes faster when the buff is higher, so you don't have an overwhelming buff for an overwhelming length of time.
-	if(justice == 0 || !buffed)
+	if(justice <= 0 || !buffed)
 		return FALSE
 	var/factor = justice / 10
 	var/timing = 10 + max(0, (100 - factor * factor))
@@ -145,3 +148,11 @@
 		L.adjust_attribute_buff(JUSTICE_ATTRIBUTE, 20)
 
 #undef STATUS_EFFECT_TEARS
+
+/datum/reagent/abnormality/bottle
+	name = "Crumbs"
+	description = "A small pile of slightly soggy crumbs."
+	reagent_state = SOLID
+	color = "#ad8978"
+	health_restore = 2
+	stat_changes = list(-4, -4, -4, -4)

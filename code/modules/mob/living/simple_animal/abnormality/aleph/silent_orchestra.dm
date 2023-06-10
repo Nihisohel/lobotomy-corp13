@@ -56,6 +56,7 @@
 /mob/living/simple_animal/hostile/abnormality/silentorchestra/Destroy()
 	for(var/obj/effect/silent_orchestra_singer/O in performers)
 		O.fade_out()
+	performers.Cut()
 	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/silentorchestra/CanAttack(atom/the_target)
@@ -64,6 +65,8 @@
 /mob/living/simple_animal/hostile/abnormality/silentorchestra/proc/DamagePulse()
 	if(current_movement_num < 5)
 		for(var/mob/living/L in livinginrange(symphony_range, get_turf(src)))
+			if(L.z != z)
+				continue
 			if(faction_check_mob(L))
 				continue
 			var/dealt_damage = max(6, symphony_damage - round(get_dist(src, L) * 0.1))

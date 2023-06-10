@@ -32,7 +32,7 @@
 		/datum/ego_datum/weapon/dream,
 		/datum/ego_datum/armor/dream
 		)
-//	gift_type =  /datum/ego_gifts/dream
+	gift_type =  /datum/ego_gifts/dream
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 	var/punched = FALSE
 	var/pulse_damage = 50
@@ -150,7 +150,7 @@
 	var/homing_range = 9
 
 /obj/projectile/sleepdart/Initialize()
-	..()
+	. = ..()
 	var/list/targetslist = list()
 	for(var/mob/living/carbon/human/H in view(homing_range, src))
 		if(H.IsSleeping())

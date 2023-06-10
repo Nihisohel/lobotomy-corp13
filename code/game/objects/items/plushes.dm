@@ -592,6 +592,11 @@
 	desc = "A plushie depicting a mountain of corpses merged into one. Yuck!"
 	icon_state = "mosb"
 
+/obj/item/toy/plush/big_bad_wolf
+	name = "big and will be bad wolf plushie"
+	desc = "A plushie depicting quite a not so bad and very much so marketable wolf plush."
+	icon_state = "big_bad_wolf"
+
 /obj/item/toy/plush/melt
 	name = "melting love plushie"
 	desc = "A plushie depicting a slime girl, you think."
@@ -617,3 +622,11 @@
 	name = "cirno fumo"
 	desc = "A plushie depicting an adorable ice fairy. It's cold to the touch."
 	icon_state = "fumo_cirno"
+
+// Special
+/obj/item/toy/plush/bongy
+	name = "bongy plushie"
+	desc = "It looks like a raw chicken. A cute raw chicken!"
+	icon = 'icons/obj/plushes.dmi'
+	icon_state = "bongy"
+	squeak_override = list('sound/creatures/lc13/bongy/kweh.ogg'=1)

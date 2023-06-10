@@ -52,26 +52,27 @@ GLOBAL_LIST_EMPTY(zombies)
 		)
 	gift_type =  /datum/ego_gifts/warring
 	gift_message = "The totem somehow dons a seemingly ridiculous hat on your head."
-
+	abnormality_origin = ABNORMALITY_ORIGIN_ORIGINAL
 
 /*---Combat---*/
-	//range and attack speed for thunder bombs, taken from general bee
-	var/fire_cooldown_time = 3 SECONDS
-	var/fireball_range = 7
-	var/fire_cooldown
-	var/targetAmount = 0
-
 	//Melee stats
 	attack_sound = 'sound/abnormalities/thunderbird/tbird_peck.ogg'
 	stat_attack = HARD_CRIT
 	melee_damage_lower = 10
 	melee_damage_upper = 15
+	melee_damage_type = BLACK_DAMAGE
 	rapid_melee = 2
 	attack_verb_continuous = "pecks"
 	attack_verb_simple = "peck"
 	vision_range = 15
 	aggro_vision_range = 30
 	ranged = TRUE//allows it to attempt charging without being in melee range
+
+	//range and attack speed for thunder bombs, taken from general bee
+	var/fire_cooldown_time = 3 SECONDS
+	var/fireball_range = 7
+	var/fire_cooldown
+	var/targetAmount = 0
 
 	//Stolen charge code from helper
 	var/charging = FALSE
@@ -181,6 +182,8 @@ GLOBAL_LIST_EMPTY(zombies)
 	for(var/turf/TF in range(1, T))//Smash AOE visual
 		new /obj/effect/temp_visual/smash_effect(TF)
 	for(var/mob/living/L in range(1, T))//damage applied to targets in range
+		if(L.z != z)
+			continue
 		if(!faction_check_mob(L))
 			if(L in been_hit)
 				continue
@@ -239,6 +242,8 @@ GLOBAL_LIST_EMPTY(zombies)
 /mob/living/simple_animal/hostile/abnormality/thunder_bird/proc/fireshell()
 	fire_cooldown = world.time + fire_cooldown_time
 	for(var/mob/living/carbon/human/L in livinginrange(fireball_range, src))
+		if(L.z != z)
+			continue
 		if(faction_check_mob(L, FALSE))
 			continue
 		if (targetAmount <= 2)
@@ -260,7 +265,7 @@ GLOBAL_LIST_EMPTY(zombies)
 	layer = POINT_LAYER	//Sprite should always be visible
 
 /obj/effect/thunderbolt/Initialize()
-	..()
+	. = ..()
 	addtimer(CALLBACK(src, .proc/explode), 3 SECONDS)
 
 //Zombie conversion through lightning bombs
@@ -365,7 +370,7 @@ GLOBAL_LIST_EMPTY(zombies)
 		Convert(H)
 
 /mob/living/simple_animal/hostile/thunder_zombie/Initialize()
-	..()
+	. = ..()
 	GLOB.zombies += src
 	playsound(get_turf(src), 'sound/abnormalities/thunderbird/tbird_charge.ogg', 50, 1, 4)
 	base_pixel_x = rand(-6,6)

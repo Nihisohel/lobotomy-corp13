@@ -21,7 +21,7 @@
 		/datum/ego_datum/armor/wrist
 	)
 
-	//gift_type =  /datum/ego_gifts/bloodbath
+	gift_type =  /datum/ego_gifts/wrist
 
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
@@ -44,10 +44,10 @@
 		SLEEP_CHECK_DEATH(3 SECONDS)
 		hands ++
 		if(hands < 4)
-			max_boxes += 4
+			datum_reference.max_boxes += 4
 			icon_state = "bloodbath[hands]"
 		else
 			hands = 0
-			max_boxes = 14
+			datum_reference.max_boxes = max_boxes
 			icon_state = "bloodbath"
 		return

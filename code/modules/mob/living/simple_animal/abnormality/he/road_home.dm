@@ -30,8 +30,11 @@
 	deathsound = 'sound/abnormalities/roadhome/House_NormalAtk.ogg'
 	ego_list = list(
 		/datum/ego_datum/weapon/homing_instinct,
-		/datum/ego_datum/armor/homing_instinct)
+		/datum/ego_datum/armor/homing_instinct
+		)
+	gift_type = /datum/ego_gifts/homing_instinct
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
+
 	///Stuff related to the house and its path
 	var/obj/road_house/house
 	var/list/house_path
@@ -333,7 +336,7 @@
 	var/brick_number //The index of this brick in the brick list
 
 /obj/effect/golden_road/Initialize()
-	..()
+	. = ..()
 	animate(src, alpha = 255, time = 0.5 SECONDS)
 
 //This will make those people try to reach the house, they will be slowed to be easier to intercept, and are generally rather harmless.
@@ -377,10 +380,10 @@
 
 /datum/status_effect/stay_home/on_apply()
 	. = ..()
-	RegisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE, .proc/moved)
+	RegisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE, .proc/Moved)
 
 ///If someone has this status effect, they will be incapable of leaving the gold road if they ever step on it.
-/datum/status_effect/stay_home/proc/moved(datum/source, atom/new_location)
+/datum/status_effect/stay_home/proc/Moved(datum/source, atom/new_location)
 	SIGNAL_HANDLER
 	var/turf/newloc_turf = get_turf(new_location)
 	var/valid_tile = FALSE
@@ -394,3 +397,7 @@
 
 	if(!valid_tile)
 		return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+
+/datum/status_effect/stay_home/on_remove()
+	UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
+	return ..()

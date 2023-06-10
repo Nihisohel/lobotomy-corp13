@@ -22,6 +22,7 @@
 		/datum/ego_datum/weapon/praetorian,
 		/datum/ego_datum/armor/loyalty
 		)
+	gift_type =  /datum/ego_gifts/loyalty
 	loot = list(/obj/item/clothing/suit/armor/ego_gear/praetorian) // Don't think it was dropping before, this should make it do so
 	//She doesn't usually breach. However, when she does, she's practically an Aleph-level threat. She's also really slow, and should pack a punch.
 	health = 3000
@@ -71,6 +72,8 @@
 	fire_cooldown = world.time + fire_cooldown_time
 	var/list/targets = list()
 	for(var/mob/living/L in livinginrange(fireball_range, src))
+		if(L.z != z)
+			continue
 		if(L.status_flags & GODMODE)
 			continue
 		if(faction_check_mob(L, FALSE))
@@ -175,6 +178,8 @@
 	fire_cooldown = world.time + fire_cooldown_time
 	var/list/targets = list()
 	for(var/mob/living/L in livinginrange(fireball_range, src))
+		if(L.z != z)
+			continue
 		if(L.status_flags & GODMODE)
 			continue
 		if(faction_check_mob(L, FALSE))
@@ -199,7 +204,7 @@
 	layer = POINT_LAYER	//We want this HIGH. SUPER HIGH. We want it so that you can absolutely, guaranteed, see exactly what is about to hit you.
 
 /obj/effect/beeshell/Initialize()
-	..()
+	. = ..()
 	addtimer(CALLBACK(src, .proc/explode), 3.5 SECONDS)
 
 /obj/effect/beeshell/New(loc, ...)

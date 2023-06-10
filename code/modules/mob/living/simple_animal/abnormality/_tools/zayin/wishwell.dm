@@ -127,6 +127,7 @@
 	var/list/dawn = list(
 		/mob/living/simple_animal/hostile/ordeal/green_bot,
 		/mob/living/simple_animal/hostile/ordeal/indigo_dawn,
+		/obj/item/clothing/mask/facehugger/bongy,
 		/mob/living/simple_animal/hostile/ordeal/violet_fruit
 		)
 	var/list/noon = list(
@@ -183,7 +184,7 @@
 	else if(istype(I, /obj/item/clothing/suit/armor/ego_gear) || istype(I, /obj/item/gun/ego_gun/pistol) || istype(I, /obj/item/ego_weapon) || istype(I, /obj/item/gun/ego_gun) && !istype(I, /obj/item/gun/ego_gun/clerk))
 		playsound(src, 'sound/effects/bubbles.ogg', 80, TRUE, -3)
 		to_chat(user, "<span class='notice'>You hear the ego dissolve as it comes in contact with the water...</span>")
-		if(locate(I) in tethitem)
+		if(locate(I) in tethitem) //TODO: use a different proc? We want an exact match in item paths.
 			output = "TETH"
 		else if(locate(I) in heitem)
 			output = "HE"
@@ -252,7 +253,7 @@
 				if(6 to 15)
 					gift = pick(heitem)
 				if(16 to 20)//5% odds to get a rarer item at WAW/ALEPH
-					gift = pick(/obj/item/ego_weapon/rabbit_blade,/obj/item/clothing/suit/armor/ego_gear/rabbit)
+					gift = pick(/obj/item/ego_weapon/city/rabbit_blade,/obj/item/clothing/suit/armor/ego_gear/rabbit)
 				if(21 to 50)
 					gift = pick(wawitem)
 		if("ALEPH")

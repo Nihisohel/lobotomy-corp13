@@ -215,6 +215,15 @@ SUBSYSTEM_DEF(ticker)
 	var/init_start = world.timeofday
 		//Create and announce mode
 	var/list/datum/game_mode/runnable_modes
+	//These maps need all abnos breached.
+	//Fucking Maptype initializes before Ticker so I need to do this here
+	if(SSmaptype.maptype in SSmaptype.combatmaps)
+		if(!(istype(mode, /datum/game_mode/combat)))
+			mode = new /datum/game_mode/combat
+	else
+		if(istype(mode, /datum/game_mode/combat))
+			mode = new /datum/game_mode/management/classic
+
 	if(GLOB.master_mode == "random" || GLOB.master_mode == "secret")
 		runnable_modes = config.get_runnable_modes()
 
@@ -427,9 +436,16 @@ SUBSYSTEM_DEF(ticker)
 	else
 		var/list/randomtips = world.file2list("strings/tips.txt")
 		var/list/memetips = world.file2list("strings/sillytips.txt")
-		if(randomtips.len && prob(95))
+		var/list/abnotips = world.file2list("strings/abnotips.txt")
+		var/list/jobtips = world.file2list("strings/jobtips.txt")
+		if(abnotips.len && prob(50))	//First, get an abno tip if you can at 50%
+			m = pick(abnotips)
+		if(randomtips.len && prob(50))	//Then, get a general tip, at 25%
 			m = pick(randomtips)
-		else if(memetips.len)
+		if(jobtips.len && prob(80))	//Finally, get a job tip, at 20%
+			m = pick(jobtips)
+
+		else if(memetips.len)	//at 5% you got the meme tips.
 			m = pick(memetips)
 
 	if(m)

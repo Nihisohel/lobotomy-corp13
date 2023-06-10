@@ -145,9 +145,39 @@
 	desc = "The luminous organ shines brilliantly, making it useful for lighting up the dark. It’s also great as a lure."
 	icon_state = "lantern"
 	armor = list(RED_DAMAGE = 10, WHITE_DAMAGE = 20, BLACK_DAMAGE = -10, PALE_DAMAGE = 0) //20
+	light_system = MOVABLE_LIGHT
+	light_color = COLOR_YELLOW
+	light_range = 1
+	light_on = FALSE
+	var/on = FALSE
+
+/obj/item/clothing/suit/armor/ego_gear/lantern/attack_self(mob/user)
+	on = !on
+	playsound(user, on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 30, TRUE)
+	set_light_on(on)
+	return 1
 
 /obj/item/clothing/suit/armor/ego_gear/curfew
-	name = "Curfew"
+	name = "curfew"
 	desc = "Everything was rotting but the memory of that night wasn't."
 	icon_state = "curfew"
 	armor = list(RED_DAMAGE = -20, WHITE_DAMAGE = 20, BLACK_DAMAGE = 0, PALE_DAMAGE = 20) // 20
+
+/obj/item/clothing/suit/armor/ego_gear/page
+	name = "page"
+	desc = "When one has filled book in whatever way, then the book may grant one wish. \
+	It may sound absurd but many take the rumor seriously."
+	icon_state = "page"
+	armor = list(RED_DAMAGE = -20, WHITE_DAMAGE = 10, BLACK_DAMAGE = 30, PALE_DAMAGE = 0) // 20
+
+/obj/item/clothing/suit/armor/ego_gear/snapshot
+	name = "snapshot"
+	desc = "Why else would it show absolutely no movement during all the observations and work we've done?"
+	icon_state = "snapshot"
+	armor = list(RED_DAMAGE = -40, WHITE_DAMAGE = 40, BLACK_DAMAGE = 0, PALE_DAMAGE = 0)
+
+/obj/item/clothing/suit/armor/ego_gear/wishing_cairn
+	name = "wishing cairn"
+	desc = "If it is fortune you seek, pray with all sincerity."
+	icon_state = "wishing_cairn"
+	armor = list(RED_DAMAGE = 0, WHITE_DAMAGE = -10, BLACK_DAMAGE = 10, PALE_DAMAGE = 20) // 20

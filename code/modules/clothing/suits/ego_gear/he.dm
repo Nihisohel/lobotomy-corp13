@@ -76,7 +76,6 @@
 	// I kept it well-rounded, and lowered the requirements, It's now LIKE a waw with it's good, well-rounded defenses, but it was generally lowered.
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = 20, BLACK_DAMAGE = 20, PALE_DAMAGE = 20) // 80
 	attribute_requirements = list(
-							FORTITUDE_ATTRIBUTE = 40,
 							JUSTICE_ATTRIBUTE = 40
 							)
 
@@ -106,7 +105,7 @@
 	flags_inv = HIDESHOES
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = -20, BLACK_DAMAGE = 40, PALE_DAMAGE = 20) // 70
 	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 40
+							PRUDENCE_ATTRIBUTE = 40
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/harmony
@@ -125,7 +124,7 @@
 	flags_inv = HIDESHOES
 	armor = list(RED_DAMAGE = 0, WHITE_DAMAGE = 40, BLACK_DAMAGE = 20, PALE_DAMAGE = 10)
 	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 40
+							PRUDENCE_ATTRIBUTE = 40
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/frostsplinter
@@ -183,7 +182,7 @@
 	icon_state = "pleasure"
 	armor = list(RED_DAMAGE = -30, WHITE_DAMAGE = 40, BLACK_DAMAGE = 40, PALE_DAMAGE = 20) //70
 	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 40)
+							PRUDENCE_ATTRIBUTE = 40)
 
 /obj/item/clothing/suit/armor/ego_gear/galaxy
 	name = "galaxy"
@@ -228,7 +227,7 @@
 	desc = "the coat itself is made from metal sheets"
 	icon_state = "metal"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 10, BLACK_DAMAGE = 10, PALE_DAMAGE = 0)
-	attribute_requirements = list(TEMPERANCE_ATTRIBUTE = 40)
+	attribute_requirements = list(FORTITUDE_ATTRIBUTE = 40)
 
 /obj/item/clothing/suit/armor/ego_gear/homing_instinct
 	name = "homing instinct"
@@ -245,7 +244,7 @@
 	icon_state = "maneater"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 20, BLACK_DAMAGE = 30, PALE_DAMAGE = -10) // 70
 	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 40
+							FORTITUDE_ATTRIBUTE = 40
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/inheritance
@@ -298,4 +297,49 @@
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = -20, BLACK_DAMAGE = 50, PALE_DAMAGE = 20) // 70
 	attribute_requirements = list(
 							TEMPERANCE_ATTRIBUTE = 40
+							)
+
+/obj/item/clothing/suit/armor/ego_gear/fluid_sac
+	name = "fluid sac"
+	desc = "Its contents are an enigma; it bears resemblance to a flower, or the central nervous system of a human."
+	icon_state = "fluid_sac"
+	armor = list(RED_DAMAGE = -10, WHITE_DAMAGE = 30, BLACK_DAMAGE = 50, PALE_DAMAGE = 0) // 70
+	attribute_requirements = list(
+							FORTITUDE_ATTRIBUTE = 40
+							)
+
+/obj/item/clothing/suit/armor/ego_gear/window
+	name = "window to the world"
+	desc = "What you see is but a fragment of what there is."
+	icon_state = "window"
+	armor = list(RED_DAMAGE = -10, WHITE_DAMAGE = 30, BLACK_DAMAGE = 50, PALE_DAMAGE = 0) // 70
+	attribute_requirements = list(
+							JUSTICE_ATTRIBUTE = 40
+							)
+
+/obj/item/clothing/suit/armor/ego_gear/jackrabbit
+	name = "jackrabbit"
+	desc = "A lone rabbit hops down a snowy path in a forest it's blakc antlers matching the dead tree's around it."
+	icon_state = "jackrabbit"
+	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = 0, BLACK_DAMAGE = 50, PALE_DAMAGE = 0) // 70
+	attribute_requirements = list(
+							JUSTICE_ATTRIBUTE = 40
+							)
+
+/obj/item/clothing/suit/armor/ego_gear/replica
+	name = "replica"
+	desc = "This coat is covered in glowing sensors. It appears to be incomplete, with exposed sinews underneath the plating."
+	icon_state = "replica"
+	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = 20, BLACK_DAMAGE = 30, PALE_DAMAGE = 0) // 70
+	attribute_requirements = list(
+							JUSTICE_ATTRIBUTE = 40
+							)
+
+/obj/item/clothing/suit/armor/ego_gear/warp
+	name = "dimension shredder"
+	desc = "I thought WARP trains were supposed to arrive in just ten seconds?"
+	icon_state = "warp"
+	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 0, BLACK_DAMAGE = 30, PALE_DAMAGE = 0) // 70
+	attribute_requirements = list(
+							JUSTICE_ATTRIBUTE = 40
 							)

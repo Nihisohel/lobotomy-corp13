@@ -8,18 +8,24 @@
 		// ZAYIN
 		/obj/item/clothing/suit/armor/ego_gear/penitence = /obj/item/clothing/suit/armor/ego_gear/realization/confessional,
 		/obj/item/storage/book/bible = /obj/item/clothing/suit/armor/ego_gear/realization/prophet, // TEMPORARY
+		/obj/item/clothing/suit/armor/ego_gear/little_alice = /obj/item/clothing/suit/armor/ego_gear/realization/maiden,
 		// TETH
 		/obj/item/clothing/suit/armor/ego_gear/beak = /obj/item/clothing/suit/armor/ego_gear/realization/mouth,
 		/obj/item/clothing/suit/armor/ego_gear/fragment = /obj/item/clothing/suit/armor/ego_gear/realization/universe,
 		/obj/item/clothing/suit/armor/ego_gear/eyes = /obj/item/clothing/suit/armor/ego_gear/realization/death,
 		/obj/item/clothing/suit/armor/ego_gear/daredevil = /obj/item/clothing/suit/armor/ego_gear/realization/fear,
 		/obj/item/clothing/suit/armor/ego_gear/wrist = /obj/item/clothing/suit/armor/ego_gear/realization/exsanguination,
+		/obj/item/clothing/suit/armor/ego_gear/match = /obj/item/clothing/suit/armor/ego_gear/realization/ember_matchlight,
 		// HE
 		/obj/item/clothing/suit/armor/ego_gear/grinder = /obj/item/clothing/suit/armor/ego_gear/realization/grinder,
 		/obj/item/clothing/suit/armor/ego_gear/magicbullet = /obj/item/clothing/suit/armor/ego_gear/realization/bigiron,
 		/obj/item/clothing/suit/armor/ego_gear/solemnlament = /obj/item/clothing/suit/armor/ego_gear/realization/eulogy,
+		/obj/item/clothing/suit/armor/ego_gear/unrequited = /obj/item/clothing/suit/armor/ego_gear/realization/forever,
 		// WAW
 		/obj/item/clothing/suit/armor/ego_gear/goldrush = /obj/item/clothing/suit/armor/ego_gear/realization/goldexperience,
+		/obj/item/clothing/suit/armor/ego_gear/despair = /obj/item/clothing/suit/armor/ego_gear/realization/quenchedblood,
+		/obj/item/clothing/suit/armor/ego_gear/hatred = /obj/item/clothing/suit/armor/ego_gear/realization/lovejustice,
+		/obj/item/clothing/suit/armor/ego_gear/blind_rage = /obj/item/clothing/suit/armor/ego_gear/realization/woundedcourage,
 		/obj/item/clothing/suit/armor/ego_gear/lamp = /obj/item/clothing/suit/armor/ego_gear/realization/eyes,
 		/obj/item/clothing/suit/armor/ego_gear/oppression = /obj/item/clothing/suit/armor/ego_gear/realization/cruelty,
 		/obj/item/clothing/suit/armor/ego_gear/executive = /obj/item/clothing/suit/armor/ego_gear/realization/capitalism,

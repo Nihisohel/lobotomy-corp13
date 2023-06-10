@@ -15,6 +15,8 @@
 	var/list/scramble_list = list()
 	///Linked Panel
 	var/obj/machinery/containment_panel/linked_panel
+	/// Accumulated abnormality chemical.
+	var/chem_charges = 0
 
 /obj/machinery/computer/abnormality/Initialize()
 	. = ..()
@@ -162,6 +164,7 @@
 	if(meltdown == MELTDOWN_CYAN)
 		work_chance -= 20
 	var/work_speed = 2 SECONDS / (1 + ((get_attribute_level(user, TEMPERANCE_ATTRIBUTE) + datum_reference.understanding) / 100))
+	work_speed /= user.physiology.work_speed_mod
 	var/success_boxes = 0
 	var/total_boxes = 0
 	var/canceled = FALSE
@@ -245,6 +248,11 @@
 			SSlobotomy_corp.WorkComplete(pe, (meltdown_time <= 0))
 		else
 			datum_reference.current.WorkComplete(user, work_type, pe, work_speed*datum_reference.max_boxes)
+	var/obj/item/chemical_extraction_attachment/attachment = locate() in src.contents
+	if(attachment)
+		chem_charges += 1
+	else
+		chem_charges = min(chem_charges + 0.2, 10)
 	meltdown_time = 0
 	datum_reference.working = FALSE
 	return TRUE

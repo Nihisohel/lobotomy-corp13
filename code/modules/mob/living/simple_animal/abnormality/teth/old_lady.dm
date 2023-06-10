@@ -19,7 +19,7 @@
 		/datum/ego_datum/weapon/solitude,
 		/datum/ego_datum/armor/solitude
 		)
-//	gift_type =  /datum/ego_gifts/solitude
+	gift_type =  /datum/ego_gifts/solitude
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 	var/meltdown_cooldown_time = 120 SECONDS
 	var/meltdown_cooldown
@@ -63,7 +63,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/effect/solitude/Initialize()
-	..()
+	. = ..()
 	icon_state = "solitude[pick(1,2,3,4)]"
 	animate(src, alpha = 0, time = 3 SECONDS)
 	QDEL_IN(src, 3 SECONDS)

@@ -64,6 +64,8 @@ SUBSYSTEM_DEF(lobotomy_corp)
 	//possession conditions
 	var/enable_possession = FALSE
 
+	var/understood_abnos = 0
+
 /datum/controller/subsystem/lobotomy_corp/Initialize(timeofday)
 	. = ..()
 	addtimer(CALLBACK(src, .proc/SetGoal), 5 MINUTES)
@@ -166,7 +168,7 @@ SUBSYSTEM_DEF(lobotomy_corp)
 	if(ran_ordeal)
 		return
 	InitiateMeltdown(qliphoth_meltdown_amount, FALSE)
-	qliphoth_meltdown_amount = max(1, round(abno_amount * 0.35))
+	qliphoth_meltdown_amount = max(1, round(abno_amount * CONFIG_GET(number/qliphoth_meltdown_percent)))
 
 /datum/controller/subsystem/lobotomy_corp/proc/InitiateMeltdown(meltdown_amount = 1, forced = TRUE, type = MELTDOWN_NORMAL, min_time = 60, max_time = 90, alert_text = "Qliphoth meltdown occured in containment zones of the following abnormalities:", alert_sound = 'sound/effects/meltdownAlert.ogg')
 	var/list/computer_list = list()
@@ -178,7 +180,7 @@ SUBSYSTEM_DEF(lobotomy_corp)
 			continue
 		if(!cmp.datum_reference || !cmp.datum_reference.current)
 			continue
-		if(!(cmp.datum_reference.current.status_flags & GODMODE) || (!cmp.datum_reference.qliphoth_meter && cmp.datum_reference.qliphoth_meter_max))
+		if(!cmp.datum_reference.current.IsContained()) // Does what the old check did, but allows it to be redefined by abnormalities that do so.
 			continue
 		if(!(cmp.datum_reference.threat_level in qliphoth_meltdown_affected) && !forced)
 			continue

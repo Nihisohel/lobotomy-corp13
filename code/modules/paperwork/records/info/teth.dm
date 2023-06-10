@@ -79,12 +79,16 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/crumbling_armor
 	abno_code = "O-05-61"
 	abno_info = list(
-		"When an employee with Fortitude Level 1 completed the work, they were found with their head cut clean off.",
+		"When an employee with Fortitude Level 1 completed the work, they were found with their head cut clean off. When this happened, Crumbling Armor's Qliphoth Counter lowered by 1.",
+		"When the work result was Good, the Qliphoth Counter increased.",
 		"Upon completing a Repression work with Crumbling Armor, the employee gained a glowing aura. This aura seemed to increase their stats regarding Justice.",
 		"Each time the employee completed Repression work with any Abnormality, the aura intensified.",
-		"WARNING: When an employee with the aura performed Attachment work, they were found with their head sliced clean off.",
+		"When the Qliphoth Counter reached 0, several employees were marked for a short time. Upon moving, the marked employees were struck with PALE damage by an unseen assailant.",
+		"When the Qliphoth Counter reached 0 several times in a short span of time, the Qliphoth Counter increased.",
+		"WARNING: When an employee with the aura performed Attachment work, they were found with their head sliced clean off. In addition, Crumbling Armor's Qliphoth Counter lowered by 1.",
 		"WARNING: As the aura intensified, so too did its effect. However, an additional loss of Fortitude was noted.")
 
+//Bloodbath
 /obj/item/paper/fluff/info/teth/bloodbath
 	abno_type = /mob/living/simple_animal/hostile/abnormality/bloodbath
 	abno_code = "T-05-51"
@@ -220,3 +224,22 @@
 		"When the work result was Bad, the Qliphoth Counter lowered with a high probability.",
 		"When The Lady Facing the Wall’s Qliphoth Counter hit 0, Lady Facing the Wall will yell out a scream and every employee nearby that has heard has suffered heavy WHITE damage.")
 
+//Book Without Pictures or Dialogue
+/obj/item/paper/fluff/info/teth/book
+	abno_type = /mob/living/simple_animal/hostile/abnormality/book
+	abno_code = "T-04-11"
+	abno_info = list(
+		"When work was performed, the employee felt compelled to write in the book regardless of result.",
+		"Employees suffered from higher amounts of damage during work when the book was closer to completion.",
+		"Upon finishing repression work, employee Noah felt compelled to rip pages out of the abnormality.",
+		"Attempted repression work when the book was already empty nearly always ended in failure. In constrast, repression work performed when the book was full was usually successful.")
+
+//Someone's Portrait
+/obj/item/paper/fluff/info/teth/someones_portrait
+	abno_type = /mob/living/simple_animal/hostile/abnormality/someones_portrait
+	abno_code = "O-01-19"
+	abno_info = list(
+		"When an employee, who had both Fortitude Level 1 and Prudence Level 1, completed the work process, they suddenly ran out in a panic, fearing for their life.",
+		"Employees working on O-01-19 may experience vivid hallucinations and percieved attempts at one's life during work. Employees are encouraged to ignore them and focus on work.",
+		"When the work result was bad, the employee suddenly fell into a panic.",
+		"Any time work was completed, O-01-19 destroyed all nearby light sources.")

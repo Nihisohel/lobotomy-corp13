@@ -38,15 +38,15 @@
 	rapid_melee = 2
 	attack_sound = 'sound/abnormalities/wrath_servant/small_smash1.ogg'
 	stat_attack = HARD_CRIT
+	deathmessage = "vanishes from existance."
 
 	can_patrol = FALSE
-
-	gift_type = /datum/ego_gifts/blind_rage
 
 	ego_list = list(
 		/datum/ego_datum/weapon/blind_rage,
 		/datum/ego_datum/armor/blind_rage
 	)
+	gift_type = /datum/ego_gifts/blind_rage
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
 	var/friendly = TRUE
@@ -118,6 +118,8 @@
 		return
 	if(stunned && COOLDOWN_FINISHED(src, stun))
 		for(var/mob/living/L in range(10, src))
+			if(L.z != z)
+				continue
 			if(istype(L, /mob/living/simple_animal/hostile/azure_hermit) || istype(L, /mob/living/simple_animal/hostile/azure_stave))
 				continue
 			L.apply_damage(30, WHITE_DAMAGE, null, L.run_armor_check(null, WHITE_DAMAGE), spread_damage = TRUE)
@@ -128,7 +130,7 @@
 		return
 	var/mob/living/simple_animal/hostile/azure_hermit/AH = locate() in view(5, src)
 	if(AH?.status_flags & GODMODE)
-		manual_emote("smashes the Azure Hermit with it's hammer.")
+		manual_emote("smashes the Azure Hermit with its hammer.")
 		PerformEnding(AH)
 		return
 	if(isnull(hunted_target) || !hunted_target)
@@ -180,7 +182,7 @@
 	adjustBruteLoss(-maxHealth)
 	stunned = FALSE
 	icon_state = icon_living
-	desc = "A large red monster with white bandages hanging from it. It's flesh oozes a bubble acid."
+	desc = "A large red monster with white bandages hanging from it. Its flesh oozes a bubble acid."
 	manual_emote("begins to move once more!")
 
 /mob/living/simple_animal/hostile/abnormality/servant_wrath/Move()
@@ -257,6 +259,9 @@
 /mob/living/simple_animal/hostile/abnormality/servant_wrath/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(work_type != "Request")
 		return ..()
+	if(datum_reference.console.meltdown)
+		say("A-Aghh...")
+		return FALSE
 	if(!(user in friend_ship))
 		say("All are to be treated equally, even those you keep in cages. You are no exception, [user.first_name()].")
 		return FALSE
@@ -282,6 +287,8 @@
 	return
 
 /mob/living/simple_animal/hostile/abnormality/servant_wrath/BreachEffect(mob/living/carbon/human/user)
+	if(!datum_reference)
+		friendly = FALSE
 	if(friendly)
 		instability += 10
 		icon_state = icon_living
@@ -294,12 +301,11 @@
 			if(H.stat == DEAD)
 				continue
 			possible_targets += H
-			break
 		var/list/highest_params = list(0, 0)
 		for(var/mob/living/simple_animal/hostile/H in possible_targets) // This SHOULD hunt the biggest dude around
 			if(H == src)
 				continue
-			if(faction_check_mob(H))
+			if(faction_check(H.faction, list("neutral"), FALSE))
 				continue
 			if(H.damage_coeff[RED_DAMAGE] <= 0) // Can't be hurt (Feasibly)
 				continue
@@ -342,8 +348,12 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_ABNORMALITY_BREACH, src)
 	FearEffect()
 	say("EMBODIMENTS OF EVIL!!!")
-	desc = "A large red monster with white bandages hanging from it. It's flesh oozes a bubble acid."
+	desc = "A large red monster with white bandages hanging from it. Its flesh oozes a bubble acid."
 	can_act = TRUE
+	GiveTarget(user)
+	if(!datum_reference)
+		can_patrol = TRUE
+		return
 	for(var/turf/dep in GLOB.department_centers)
 		if(get_dist(src, dep) < 30)
 			continue
@@ -364,7 +374,7 @@
 	if(!friendly)
 		icon_state = "wrath_charge"
 		playsound(src, 'sound/abnormalities/wrath_servant/enrage.ogg', 75, FALSE, 20, falloff_distance = 10)
-	manual_emote("raises [friendly ? "their" : "it's"] hammers!")
+	manual_emote("raises [friendly ? "their" : "its"] hammers!")
 	var/list/show_area = list()
 	show_area |= range(3, src)
 	show_area |= view(5, src)
@@ -500,12 +510,8 @@
 	can_act = TRUE
 
 /mob/living/simple_animal/hostile/abnormality/servant_wrath/death(gibbed)
-	if(isnull(src.datum_reference))
-		var/mob/living/simple_animal/hostile/azure_hermit/AH = locate() in GLOB.mob_living_list
-		if(AH)
-			AH.gib(TRUE)
-		..()
-		return
+	if(!datum_reference)
+		return ..()
 	if(ending)
 		return FALSE
 	INVOKE_ASYNC(src, .proc/Downed)
@@ -536,6 +542,7 @@
 	a_intent = INTENT_HARM
 	move_resist = MOVE_FORCE_STRONG
 	move_to_delay = 5
+	mob_size = MOB_SIZE_HUGE
 
 	ranged = TRUE
 	ranged_cooldown = 15 SECONDS
@@ -618,7 +625,7 @@
 			addtimer(CALLBACK(SW, /mob/living/simple_animal/hostile/abnormality/servant_wrath/proc/Unstun), 3 MINUTES)
 			SW.status_flags |= GODMODE
 			SW.icon_state = "wrath_staff_stun"
-			SW.desc = "A large red monster with white bandages hanging from it. It's flesh oozes a bubble acid. A wooden staff is impaled in it's chest, it can't seem to move!"
+			SW.desc = "A large red monster with white bandages hanging from it. Its flesh oozes a bubble acid. A wooden staff is impaled in its chest, it can't seem to move!"
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target

@@ -15,7 +15,7 @@
 	icon_state = "lamp"
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = 30, BLACK_DAMAGE = 60, PALE_DAMAGE = 30) // 140
 	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 60,
+							PRUDENCE_ATTRIBUTE = 60,
 							JUSTICE_ATTRIBUTE = 60
 							)
 
@@ -46,7 +46,7 @@
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 20, BLACK_DAMAGE = 60, PALE_DAMAGE = 30) // 140
 	attribute_requirements = list(
 							PRUDENCE_ATTRIBUTE = 60,
-							TEMPERANCE_ATTRIBUTE = 60
+							JUSTICE_ATTRIBUTE = 60
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/oppression
@@ -56,7 +56,7 @@
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 20, BLACK_DAMAGE = 40, PALE_DAMAGE = 30) //140
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 60,
-							TEMPERANCE_ATTRIBUTE = 60
+							JUSTICE_ATTRIBUTE = 60
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/totalitarianism
@@ -66,7 +66,7 @@
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 20, BLACK_DAMAGE = 50, PALE_DAMAGE = 30) // 140
 	attribute_requirements = list(
 							JUSTICE_ATTRIBUTE = 60,
-							TEMPERANCE_ATTRIBUTE = 60
+							PRUDENCE_ATTRIBUTE = 60
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/goldrush
@@ -84,7 +84,7 @@
 	icon_state = "tiara"
 	armor = list(RED_DAMAGE = 10, WHITE_DAMAGE = 50, BLACK_DAMAGE = 30, PALE_DAMAGE = 50)
 	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 60,
+							PRUDENCE_ATTRIBUTE = 60,
 							JUSTICE_ATTRIBUTE = 60
 							)
 
@@ -106,6 +106,15 @@
 							FORTITUDE_ATTRIBUTE = 80
 							)
 
+/obj/item/clothing/suit/armor/ego_gear/crimson
+	name = "crimson scar"
+	desc = "It seems only darkness awaits those who find the value of their lives in nothing but destruction."
+	icon_state = "crimson_scar"
+	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 40, BLACK_DAMAGE = 30, PALE_DAMAGE = 10)
+	attribute_requirements = list(
+							FORTITUDE_ATTRIBUTE = 80
+							)
+
 /obj/item/clothing/suit/armor/ego_gear/spore
 	name = "spore"
 	desc = "When stars light the night sky, its true form will be revealed."
@@ -113,7 +122,7 @@
 	armor = list(RED_DAMAGE = 10, WHITE_DAMAGE = 60, BLACK_DAMAGE = 30, PALE_DAMAGE = 40)
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 60,
-							TEMPERANCE_ATTRIBUTE = 60
+							PRUDENCE_ATTRIBUTE = 60
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/stem
@@ -122,7 +131,7 @@
 	icon_state = "green_stem"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 10, BLACK_DAMAGE = 70, PALE_DAMAGE = 20)
 	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 60,
+							JUSTICE_ATTRIBUTE = 60,
 							PRUDENCE_ATTRIBUTE = 60)
 
 /obj/item/clothing/suit/armor/ego_gear/loyalty
@@ -139,8 +148,7 @@
 	icon_state = "executive"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 40, BLACK_DAMAGE = 40, PALE_DAMAGE = 20) // 140
 	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 60,
-							JUSTICE_ATTRIBUTE = 60
+							JUSTICE_ATTRIBUTE = 80
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/ecstasy
@@ -165,9 +173,7 @@
 	desc = "All aboard!"
 	icon_state = "intentions"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 10, BLACK_DAMAGE = 60, PALE_DAMAGE = 30)
-	attribute_requirements = list(
-							TEMPERANCE_ATTRIBUTE = 60,
-							FORTITUDE_ATTRIBUTE = 60)
+	attribute_requirements = list(FORTITUDE_ATTRIBUTE = 80)
 
 /obj/item/clothing/suit/armor/ego_gear/aroma
 	name = "faint aroma"
@@ -204,8 +210,7 @@
 	icon_state = "exuviae"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 40, BLACK_DAMAGE = 20, PALE_DAMAGE = 20) // 140
 	attribute_requirements = list(
-							FORTITUDE_ATTRIBUTE = 60,
-							TEMPERANCE_ATTRIBUTE = 60
+							FORTITUDE_ATTRIBUTE = 80
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/ebony_stem
@@ -245,8 +250,7 @@
 	icon_state = "dark_carnival"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 60, BLACK_DAMAGE = 10, PALE_DAMAGE = 10) // 140
 	attribute_requirements = list(
-							PRUDENCE_ATTRIBUTE = 60,
-							TEMPERANCE_ATTRIBUTE = 60
+							PRUDENCE_ATTRIBUTE = 80
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/dipsia
@@ -312,3 +316,65 @@
 	attribute_requirements = list(
 							JUSTICE_ATTRIBUTE = 80)
 
+/obj/item/clothing/suit/armor/ego_gear/amrita
+	name = "amrita"
+	desc = "You can smell old dirt and fire if you put your nose close enough."
+	icon_state = "amrita"
+	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 0, BLACK_DAMAGE = 50, PALE_DAMAGE = 30) // 140
+	attribute_requirements = list(
+							PRUDENCE_ATTRIBUTE = 80
+							)
+
+/obj/item/clothing/suit/armor/ego_gear/discord
+	name = "discord"
+	desc = "What is evil if there is no good?"
+	icon_state = "discord"
+	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = 40, BLACK_DAMAGE = 60, PALE_DAMAGE = 20) // 140
+	attribute_requirements = list(
+							FORTITUDE_ATTRIBUTE = 80
+							)
+
+/obj/item/clothing/suit/armor/ego_gear/faith //pure-hearted believer
+	name = "untainted faith"
+	desc = "To have absolute faith on something that gives you salvation."
+	icon_state = "faith"
+	armor = list(RED_DAMAGE = -10, WHITE_DAMAGE = 50, BLACK_DAMAGE = 70, PALE_DAMAGE = 30) //140
+	attribute_requirements = list(
+					PRUDENCE_ATTRIBUTE = 80
+					)
+
+/obj/item/clothing/suit/armor/ego_gear/innocence
+	name = "childhood memories"
+	desc = "In my dreams as child, Peter Pan would reach out a hand for me to hold and take me to Neverland. I had forgotten all of that, until I went into that room."
+	icon_state = "innocence"
+	armor = list(RED_DAMAGE = 0, WHITE_DAMAGE = 70, BLACK_DAMAGE = 40, PALE_DAMAGE = 30) //140
+	attribute_requirements = list(
+					PRUDENCE_ATTRIBUTE = 80
+					)
+
+/obj/item/clothing/suit/armor/ego_gear/rimeshank
+	name = "rimeshank"
+	desc = "Well, I can't just shiver in the cold forever, can I?"
+	icon_state = "rimeshank"
+	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 40, BLACK_DAMAGE = 0, PALE_DAMAGE = 30) //140
+	attribute_requirements = list(
+					FORTITUDE_ATTRIBUTE = 80
+					)
+
+/obj/item/clothing/suit/armor/ego_gear/hypocrisy
+	name = "hypocrisy armor"
+	desc = "All things natural are bound to turn to dust someday. Thus, this evergreen robe must be kept far apart from mother nature."
+	icon_state = "hypocrisy"
+	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 40, BLACK_DAMAGE = 0, PALE_DAMAGE = 30) // 140
+	attribute_requirements = list(
+							PRUDENCE_ATTRIBUTE = 80
+							)
+
+/obj/item/clothing/suit/armor/ego_gear/my_own_bride
+	name = "My own Bride"
+	desc = "May your life work, Come back for you."
+	icon_state = "wife"
+	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 60, BLACK_DAMAGE = 30, PALE_DAMAGE = 20) // 140
+	attribute_requirements = list(
+							FORTITUDE_ATTRIBUTE = 60,
+							PRUDENCE_ATTRIBUTE = 60)

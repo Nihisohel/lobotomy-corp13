@@ -69,3 +69,28 @@
 	abno_info = list(
 		"When work with T-01-145 was completed, it started to speak.",
 		"If the agent working with T-01-145 listened to it's entire story, they recieved a buff for the corresponding attribute lasting 5 minutes.")
+
+//Letters on Standby
+/obj/item/paper/fluff/info/zayin/mail
+	abno_type = /mob/living/simple_animal/hostile/abnormality/mailpile
+	abno_code = "C-04-147"
+	abno_info = list("When an agent completed work with the abnormality with a neutral or good result, they were delivered a piece of mail.",
+	"Reading the mail produced differing effects depending on the type of mail received.",
+	"Upon successful repression work, the employee received a parcel.",
+	"Multiple repression works within short succession resulted in the death of the working agent.")
+
+//Fallen Amurdad
+/obj/item/paper/fluff/info/zayin/fallen_amurdad
+	abno_type = /mob/living/simple_animal/hostile/abnormality/fallen_amurdad
+	abno_code = "F-01-26"
+	abno_info = list(
+		"When work with F-01-26 was completed, a seed was sewn in the nearby soil.",
+		"Plants grown by F-01-26 seem to have been purged of most toxic properties.")
+
+//Blubbering Toad
+/obj/item/paper/fluff/info/zayin/blubbering_toad
+	abno_type = /mob/living/simple_animal/hostile/abnormality/blubbering_toad
+	abno_code = "T-02-158"
+	abno_info = list(
+		"When the abnormality was approached outside of work, it suddenly became extremely hostile to that specific employee.",
+		"Employees report the toad's cries having a soothing effect while in containment, recovering SP.")

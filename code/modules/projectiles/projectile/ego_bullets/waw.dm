@@ -23,6 +23,10 @@
 		if(firer==target)
 			return BULLET_ACT_BLOCK
 		if(user.faction_check_mob(H)) // Our faction
+			if(H.is_working)
+				H.visible_message("<span class='warning'>[src] vanishes on contact with [H]... but nothing happens!</span>")
+				qdel(src)
+				return BULLET_ACT_BLOCK
 			switch(damage_type)
 				if(WHITE_DAMAGE)
 					H.adjustSanityLoss(-damage*0.2)
@@ -138,7 +142,7 @@
 		qdel(src)
 
 /obj/projectile/ego_bullet/ego_praetorian/Initialize()
-	..()
+	. = ..()
 	addtimer(CALLBACK(src, .proc/fireback), 3)
 
 /obj/projectile/ego_bullet/ego_praetorian/proc/fireback()
@@ -201,6 +205,26 @@
 	wound_bonus = -100
 	bare_wound_bonus = -100
 
+/obj/projectile/beam/assonance/on_hit(atom/target, blocked, pierce_hit)
+	. = ..()
+	if(pierce_hit)
+		return
+	if(!ishostile(target))
+		return
+	var/mob/living/simple_animal/hostile/H = target
+	if(H.stat == DEAD || H.status_flags & GODMODE)
+		return
+	for(var/mob/living/carbon/human/Yin in view(7, H))
+		var/obj/item/ego_weapon/discord/D = Yin.get_active_held_item()
+		if(istype(D, /obj/item/ego_weapon/discord))
+			if(!D.CanUseEgo(Yin))
+				continue
+			Yin.adjustBruteLoss(-10)
+			Yin.adjustSanityLoss(-10)
+			new /obj/effect/temp_visual/healing(get_turf(Yin))
+			break
+	return
+
 //feather of honor
 /obj/projectile/ego_bullet/ego_feather
 	name = "feather"
@@ -238,6 +262,18 @@
 	damage_type = BLACK_DAMAGE
 	flag = BLACK_DAMAGE
 
+/obj/projectile/ego_bullet/ego_warring/on_hit(atom/target, blocked = FALSE)
+	. = ..()
+	var/obj/item/gun/ego_gun/warring/bow = fired_from
+	var/mob/living/user = firer
+	var/mob/living/carbon/human/H = target
+	if(!isliving(target))
+		return
+	if(user.faction_check_mob(H))//player faction
+		return
+	bow.Build_Charge()
+	return
+
 //feather of valor cont'd
 /obj/projectile/ego_bullet/ego_warring2
 	name = "feather of valor"
@@ -247,19 +283,19 @@
 	damage_type = BLACK_DAMAGE
 	flag = BLACK_DAMAGE
 	hitscan = TRUE
-	muzzle_type = /obj/effect/projectile/muzzle/laser/stun
-	tracer_type = /obj/effect/projectile/tracer/stun
-	impact_type = /obj/effect/projectile/impact/laser/stun
+	muzzle_type = /obj/effect/projectile/muzzle/laser/warring
+	tracer_type = /obj/effect/projectile/tracer/warring
+	impact_type = /obj/effect/projectile/impact/laser/warring
 
-/obj/effect/projectile/muzzle/laser/stun
+/obj/effect/projectile/muzzle/laser/warring
 	name = "lightning flash"
-	icon_state = "muzzle_stun"
-/obj/effect/projectile/tracer/laser/stun
+	icon_state = "muzzle_warring"
+/obj/effect/projectile/tracer/warring
 	name = "lightning beam"
-	icon_state = "stun"
-/obj/effect/projectile/impact/laser/stun
+	icon_state = "warring"
+/obj/effect/projectile/impact/laser/warring
 	name = "lightning impact"
-	icon_state = "impact_stun"
+	icon_state = "impact_warring"
 
 /obj/projectile/ego_bullet/ego_warring2/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -291,3 +327,32 @@
 		return
 	var/mob/living/L = target
 	L.apply_status_effect(/datum/status_effect/wrath_burning)
+
+/obj/projectile/ego_bullet/ego_hookah
+	name = "lethargy"
+	icon_state = "smoke"
+	damage = 2
+	damage_type = PALE_DAMAGE
+	speed = 2
+	range = 6
+
+/obj/projectile/ego_bullet/ego_innocence
+	name = "innocence"
+	icon_state = "energy"
+	damage = 7 //Can dual wield, full auto
+	damage_type = WHITE_DAMAGE
+	flag = WHITE_DAMAGE
+
+/obj/projectile/ego_bullet/ego_hypocrisy
+	name = "hypocrisy"
+	icon_state = "arrow_hypocrisy"
+	damage = 90 //50 damage is transfered to the spawnable trap
+	damage_type = RED_DAMAGE
+	flag = RED_DAMAGE
+
+/obj/projectile/ego_bullet/ego_bride
+	name = "bride"
+	icon_state = "bride"
+	damage = 25
+	damage_type = WHITE_DAMAGE
+	flag = WHITE_DAMAGE
